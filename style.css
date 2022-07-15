@@ -11,7 +11,9 @@ body {
   justify-content: center;
   height: 100vh;
   color: white;
+  font-weight: bold;
   font-family: sans-serif;
+  background-color: black;
 }
 
 .container {
@@ -73,7 +75,8 @@ body {
 }
 
 .numbers .top {
-  background-color: #4a3e42;
+  background-color: #393742;
+  color: #33dd7d;
 }
 
 .operators .selected-operator {
