@@ -73,59 +73,6 @@ function updateOperatorButtons(){
   });
 }
 
-//number buttons
-for(i = 0; i <= 9; i++){
-  let numberButton = document.getElementById(i);
-  numberButton.addEventListener('click', event => {
-    let element = event.currentTarget; //gets the actual button, not the child icon
-    let number = element.id;
-    if(inputIsResult){
-      input = 0;
-      inputIsResult = false;
-      updateLastOperation();
-    }
-    if(input == 0){
-      input = number;
-    } else {
-      if(input.length >= 9) return;
-      input = input + `${number}`;
-    }
-    updateDisplay();
-  });
-}
-
-//operator buttons
-['/','*','-','+','='].forEach(id => {
-  document.getElementById(id).addEventListener('click', event => {
-    let element = event.currentTarget;
-
-    if(element.id == "="){
-      if(firstNumber !== null && currentOperator !== null && input !== null) {
-        secondNumber = parseFloat(input);
-        showResult();
-        console.log('showing result');
-      }
-      console.log('end');
-      return;
-    }
-
-    if(firstNumber == null){
-      firstNumber = parseFloat(input);
-      input = '0';
-      console.log('first number');
-    } else {
-      secondNumber = parseFloat(input);
-      showResult();
-      console.log('second number');
-      return;
-    }
-    currentOperator = element.id;
-    element.classList.add('selected-operator');
-    updateDisplay();
-  });
-});
-
-//calculate and display operation result
 function updateLastOperation(){
   if(firstNumber !== null && currentOperator !== null && secondNumber !== null){
     firstNumberDisplay.innerText = firstNumber.toLocaleString("en-US");
@@ -138,11 +85,10 @@ function updateLastOperation(){
   }
 }
 
-function showResult(){
+function updateResult(){
   let result = operate(firstNumber,currentOperator,secondNumber);
-  if(!Number.isInteger(result)) result = 0;
-  console.log('result: ' + result + ' ' + secondNumber);
-  input = result;
+  if(typeof result !== "number") result = 0;
+  input = Math.round(result * 100) / 100;
   updateDisplay();
   updateLastOperation();
   inputIsResult = true;
@@ -152,10 +98,66 @@ function showResult(){
   secondNumber = null;
 }
 
+//number buttons
+for(i = 0; i <= 9; i++){
+  let numberButton = document.getElementById(i);
+  numberButton.addEventListener('click', event => {
+    let element = event.currentTarget; //gets the actual button, not the child icon
+    let number = element.id;
+    if(inputIsResult){
+      input = 0;
+      inputIsResult = false;
+      updateLastOperation();
+    }
+    if(input === 0){
+      input = number;
+    } else {
+      if(input.length >= 9) return;
+      input = input + `${number}`;
+    }
+    updateDisplay();
+  });
+}
+
+//dot button
+document.getElementById("dot").addEventListener('click', event => {
+  if(input.includes(".")) return;
+  input = input + '.';
+  updateDisplay();
+});
+
+
+//operator buttons
+['/','*','-','+','='].forEach(id => {
+  document.getElementById(id).addEventListener('click', event => {
+    let element = event.currentTarget;
+
+    if(element.id == "="){
+      if(firstNumber !== null && currentOperator !== null && input !== null) {
+        secondNumber = parseFloat(input);
+        updateResult();
+      }
+      return;
+    }
+
+    if(firstNumber == null){
+      firstNumber = parseFloat(input);
+      input = '0';
+    } else {
+      secondNumber = parseFloat(input);
+      updateResult();
+      return;
+    }
+    currentOperator = element.id;
+    element.classList.add('selected-operator');
+    updateDisplay();
+  });
+});
+
 //undo button
 document.getElementById("undo").addEventListener('click', event => {
   if(input.length < 1 || input == 0) return;
-  input = input.substring(0, input.length - 1);
+  input = `${input}`.substring(0, input.length - 1);
   updateDisplay();
 });
 
@@ -168,10 +170,21 @@ document.getElementById("clear").addEventListener('click', event => {
   updateDisplay();
 });
 
+//negative-positive button
+document.getElementById("plus-minus").addEventListener('click', event => {
+  input = input * -1;
+  updateDisplay();
+})
+
+//percent button
+document.getElementById("percent").addEventListener('click', event => {
+  input = input * 0.01;
+  updateDisplay();
+})
+
 //keyboard support
 window.addEventListener('keydown',event => {
   let key = event.key;
-  if(key == "Enter") key = "=";
   let button = document.querySelector(`button[data-key="${key}"]`);
   if(!button) return;
   let e = new Event('click');

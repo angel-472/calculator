@@ -38,7 +38,7 @@ body {
 .display .last-operation {
   font-weight: bold;
   font-size: 16px;
-  color: #d0d1d2;
+  color: #b8b8b8;
 }
 
 .display .operator {
@@ -76,7 +76,7 @@ body {
 
 .numbers .top {
   background-color: #393742;
-  color: #33dd7d;
+  color: #90b4b1;
 }
 
 .operators .selected-operator {
