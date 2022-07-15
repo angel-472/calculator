@@ -1,3 +1,10 @@
+html {
+  box-sizing: border-box;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
 body {
   display: flex;
   align-items: center;
@@ -11,22 +18,64 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #22252e;
-  height: 550px;
+  height: 510px;
   width: 300px;
   border-radius: 30px;
+  /*box-shadow: 0 0 3px black;*/
 }
 
 .display {
   display: flex;
-  height: 160px;
-  margin: 10px 30px 30px 0px;
+  flex-direction: column;
+  height: 140px;
+  margin: 10px 30px 30px 30px;
   align-items: flex-end;
   justify-content: flex-end;
 }
 
+.display .last-operation {
+  font-weight: bold;
+  font-size: 16px;
+  color: #d0d1d2;
+}
+
+.display .operator {
+  color: #1d87da;
+}
+
+.display .input {
+  font-size: 42px;
+  font-weight: bolder;
+  display: flex;
+}
+
 .buttons {
   display: flex;
+  padding: 20px;
   background-color: #292d36;
+  height: 340px;
   border-radius: 30px;
-  flex-grow: 1;
+}
+
+.buttons button {
+  border: none;
+  background-color: #272b34;
+  padding: 20px;
+  width: 51px;
+  height: 51px;
+  color: white;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+.operators button {
+  background-color: #403e4a;
+}
+
+.numbers .top {
+  background-color: #4a3e42;
+}
+
+.operators .selected-operator {
+  background-color: #ff6a38;
 }

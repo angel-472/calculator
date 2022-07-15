@@ -11,29 +11,37 @@
   <body>
     <div class="container">
       <div class="display">
-        <a class="last-operation"></a>
+        <div class="last-operation">
+          <a class="first-number"></a>
+          <a class="operator"></a>
+          <a class="second-number"></a>
+        </div>
         <a class="input">0</a>
       </div>
       <div class="buttons">
         <div class="numbers">
-          <button id="AC"><i class="fa-solid fa-a"></i><i class="fa-solid fa-c"></i></button>
-          <button id="plus-minus"><i class="fa-solid fa-plus-minus"></i></button>
-          <button id="percent"><i class="fa-solid fa-percent"></i></button>
-          <button id="7"><i class="fa-solid fa-7"></i></button>
-          <button id="8"><i class="fa-solid fa-8"></i></button>
-          <button id="9"><i class="fa-solid fa-9"></i></button>
-          <button id="4"><i class="fa-solid fa-4"></i></button>
-          <button id="5"><i class="fa-solid fa-5"></i></button>
-          <button id="6"><i class="fa-solid fa-6"></i></button>
-          <button id="1"><i class="fa-solid fa-1"></i></button>
-          <button id="2"><i class="fa-solid fa-2"></i></button>
-          <button id="3"><i class="fa-solid fa-3"></i></button>
+          <button class="c top"><i class="fa-solid fa-c"></i></button>
+          <button class="plus-minus top"><i class="fa-solid fa-plus-minus"></i></button>
+          <button class="percent top"><i class="fa-solid fa-percent"></i></button>
+          <button data-key="7" id="7"><i class="fa-solid fa-7"></i></button>
+          <button data-key="8" id="8"><i class="fa-solid fa-8"></i></button>
+          <button data-key="9" id="9"><i class="fa-solid fa-9"></i></button>
+          <button data-key="4" id="4"><i class="fa-solid fa-4"></i></button>
+          <button data-key="5" id="5"><i class="fa-solid fa-5"></i></button>
+          <button data-key="6" id="6"><i class="fa-solid fa-6"></i></button>
+          <button data-key="1" id="1"><i class="fa-solid fa-1"></i></button>
+          <button data-key="2" id="2"><i class="fa-solid fa-2"></i></button>
+          <button data-key="3" id="3"><i class="fa-solid fa-3"></i></button>
           <button id="undo"><i class="fa-solid fa-rotate-left"></i></button>
-          <button id="0"><i class="fa-solid fa-0"></i></button>
+          <button data-key="0" id="0"><i class="fa-solid fa-0"></i></button>
           <button id="dot">.</button>
         </div>
         <div class="operators">
-          <button id="+"></button>
+          <button data-key="/" id="/"><i class="fa-solid fa-divide"></i></button>
+          <button data-key="*" id="*"><i class="fa-solid fa-xmark"></i></button>
+          <button data-key="-" id="-"><i class="fa-solid fa-minus"></i></button>
+          <button data-key="+" id="+"><i class="fa-solid fa-plus"></i></button>
+          <button data-key="=" id="="><i class="fa-solid fa-equals"></i></button>
         </div>
       </div>
     </div>
