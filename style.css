@@ -1,0 +1,32 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: white;
+  font-family: sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: #22252e;
+  height: 550px;
+  width: 300px;
+  border-radius: 30px;
+}
+
+.display {
+  display: flex;
+  height: 160px;
+  margin: 10px 30px 30px 0px;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.buttons {
+  display: flex;
+  background-color: #292d36;
+  border-radius: 30px;
+  flex-grow: 1;
+}
