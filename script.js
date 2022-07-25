@@ -59,10 +59,26 @@ function updateDisplay(){
     input = '0';
   }
   updateOperatorButtons();
-  inputDisplay.innerText = parseFloat(input).toLocaleString("en-US");
   firstNumberDisplay.innerText = firstNumber !== null ? firstNumber.toLocaleString("en-US") : "";
   secondNumberDisplay.innerText = secondNumber !== null ? secondNumber.toLocaleString("en-US") : "";
   operatorDisplay.innerText = currentOperator ? niceOperator(currentOperator) : "";
+
+  inputDisplay.innerText = parseFloat(input).toLocaleString("en-US");
+  let fontSize = 42;
+  let inputString = inputDisplay.innerText;
+  if(inputString.length > 11){
+    let extraCharacters = inputString.substr(0,(inputString.length - 11));
+    extraCharacters.split("").forEach(value => {
+      console.log(value);
+      if(value == ","){
+        fontSize -= 2;
+      } else {
+        fontSize -= 3;
+      }
+    });
+    console.log(fontSize);
+  }
+  inputDisplay.style.fontSize = `${fontSize}px`;
 }
 
 function updateOperatorButtons(){
@@ -112,7 +128,6 @@ for(i = 0; i <= 9; i++){
     if(input == 0){
       input = number;
     } else {
-      console.log(input);
       if(input.length >= 9) return;
       input = input + `${number}`;
     }
