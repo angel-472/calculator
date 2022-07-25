@@ -74,7 +74,6 @@ function updateDisplay(){
       fontSize--;
       inputDisplay.style.fontSize = `${fontSize}px`;
     }
-    console.log(fontSize);
   }
   inputDisplay.style.fontSize = `${fontSize}px`;
 }
