@@ -109,9 +109,10 @@ for(i = 0; i <= 9; i++){
       inputIsResult = false;
       updateLastOperation();
     }
-    if(input === 0){
+    if(input == 0){
       input = number;
     } else {
+      console.log(input);
       if(input.length >= 9) return;
       input = input + `${number}`;
     }
