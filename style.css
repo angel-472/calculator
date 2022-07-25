@@ -30,9 +30,13 @@ body {
   display: flex;
   flex-direction: column;
   height: 140px;
+  width: 240px;
   margin: 10px 30px 30px 30px;
   align-items: flex-end;
   justify-content: flex-end;
+  text-overflow: clip;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .display .last-operation {

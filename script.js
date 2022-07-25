@@ -67,15 +67,13 @@ function updateDisplay(){
   let fontSize = 42;
   let inputString = inputDisplay.innerText;
   if(inputString.length > 11){
-    let extraCharacters = inputString.substr(0,(inputString.length - 11));
-    extraCharacters.split("").forEach(value => {
-      console.log(value);
-      if(value == ","){
-        fontSize -= 2;
-      } else {
-        fontSize -= 3;
-      }
-    });
+    let inputDisplayWidth = window.getComputedStyle(inputDisplay).width;
+    let displayWidth = window.getComputedStyle(document.querySelector('.display')).width;
+    while(inputDisplayWidth > displayWidth){
+      inputDisplayWidth = window.getComputedStyle(inputDisplay).width;
+      fontSize--;
+      inputDisplay.style.fontSize = `${fontSize}px`;
+    }
     console.log(fontSize);
   }
   inputDisplay.style.fontSize = `${fontSize}px`;
